@@ -12,8 +12,8 @@ web1:
   php_upload_max_filesize: "2000M"
   php_max_execution_time: 30000
   php_max_input_time: 30000
-  after_deploy:
-    - "bash script.sh"
-
+  after_build:
+    - "[[$(ls -A /var/www/wordpress)]] && echo 'Wordpress allready installed' || (cd /var/www/wordpress;wget http://wordpress.org/latest.tar.gz;tar xfz /var/www/wordpress/latest.tar.gz;mv /var/www/wordpress/wordpress/* /var/www/wordpress/;rmdir /var/www/wordpress/wordpress/;rm -f /var/www/wordpress/latest.tar.gz)"
+    - "mv /var/www/wp-config.php /var/www/wordpress/wp-config.php"
 db1:
   name: wordpress
