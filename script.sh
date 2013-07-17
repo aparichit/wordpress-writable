@@ -6,7 +6,10 @@ DIR="/var/www/wordpress"
 if [ "$(ls -A $DIR)" ]; then
 	echo "Wordpress allready installed"
 else
-	"(cd $DIR;wget http://wordpress.org/latest.tar.gz;tar xfz $DIR/latest.tar.gz;mv $DIR/wordpress/* $DIR/;rmdir $DIR/wordpress/;rm -f $DIR/latest.tar.gz)"
+	"(cd $DIR;wget http://wordpress.org/latest.tar.gz;tar xfz $DIR/latest.tar.gz)"
+	"mv $DIR/wordpress/* $DIR/"
+	"rmdir $DIR/wordpress/"
+	"rm -f $DIR/latest.tar.gz"
 fi
 "mv /var/www/wp-config.php $DIR/wp-config.php"
 # rest of the logic
