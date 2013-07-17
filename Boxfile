@@ -1,0 +1,19 @@
+web1:
+  name: wordpress 
+  document_root: wordpress
+  php_version: 5.3.8
+  shared_writable_dirs:
+    - wordpress
+  php_extensions: [eaccelerator, mysql, mysqli, zip, mcrypt, curl, memcache, memcached, redis, gd, simplexml, hash]
+  php_error_reporting: 30719
+  php_display_errors: "0"
+  static_expire: 604800
+  php_post_max_size: "2000M"
+  php_upload_max_filesize: "2000M"
+  php_max_execution_time: 30000
+  php_max_input_time: 30000
+  after_deploy:
+    - "bash script.sh"
+
+db1:
+  name: wordpress
